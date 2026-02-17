@@ -1,20 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void insert(int idx, int num, int arr[], int& len){
+void insert(int idx, int num, int arr[], int &len) {
 
+  if (idx < len) {
+    for (int i = len; i > idx; i--) {
+      arr[i] = arr[i - 1];
+    }
+  }
+  arr[idx] = num;
+  len++;
 }
 
-void erase(int idx, int arr[], int& len){
-  
+void erase(int idx, int arr[], int &len) {
+  if (idx < len - 1) {
+    for (int i = idx; i < len; i++) {
+      arr[i] = arr[i + 1];
+    }
+  }
+  len--;
 }
 
-void printArr(int arr[], int& len){
-  for(int i = 0; i < len; i++) cout << arr[i] << ' ';
+void printArr(int arr[], int &len) {
+  for (int i = 0; i < len; i++)
+    cout << arr[i] << ' ';
   cout << "\n\n";
 }
 
-void insert_test(){
+void insert_test() {
   cout << "***** insert_test *****\n";
   int arr[10] = {10, 20, 30};
   int len = 3;
@@ -26,7 +39,7 @@ void insert_test(){
   printArr(arr, len);
 }
 
-void erase_test(){
+void erase_test() {
   cout << "***** erase_test *****\n";
   int arr[10] = {10, 50, 40, 30, 70, 20};
   int len = 6;
