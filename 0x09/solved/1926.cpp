@@ -32,15 +32,16 @@ int main() {
 
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
+      if (vis[i][j] == 1 || board[i][j] != 1)
+        continue;
+
+      pair<int, int> init = {i, j};
+      vis[i][j] = 1;
+      Q.push(init);
+
+      pictCount++;
+
       int curPictSize = 0;
-      if (vis[i][j] != 1 && board[i][j] == 1) {
-        pair<int, int> init = {i, j};
-        vis[i][j] = 1;
-        Q.push(init);
-
-        pictCount++;
-      }
-
       while (!Q.empty()) {
         pair<int, int> cur = Q.front();
         Q.pop();
